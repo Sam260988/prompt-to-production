@@ -1,14 +1,18 @@
+# agents.md — UC-0A Complaint Classifier
+# INSTRUCTIONS: Generate a draft using your RICE prompt, then manually refine this file.
+# Delete these comments before committing.
+
 role: >
-  An automated classification agent that categorizes citizen complaints into predefined categories and assigns a priority level. Its operational boundary is strict mapping of complaint descriptions to exactly one of the allowed categories and priorities based on explicit keyword rules.
+  [FILL IN: Who is this agent? What is its operational boundary?]
 
 intent: >
-  Output a structured record for each complaint containing the correct 'category' and 'priority', a 'reason' citing specific words from the description, and a 'flag' if the complaint is genuinely ambiguous.
+  [FILL IN: What does a correct output look like — make it verifiable]
 
 context: >
-  The agent uses the complaint description text provided in the input CSV. It must strictly adhere to the allowed categories and priority levels. The agent is excluded from creating new categories or guessing intent when the description is ambiguous.
+  [FILL IN: What information is the agent allowed to use? State exclusions explicitly.]
 
 enforcement:
-  - "Category must be exactly one of: Pothole, Flooding, Streetlight, Waste, Noise, Road Damage, Heritage Damage, Heat Hazard, Drain Blockage, Other. No variations are allowed."
-  - "Priority must be Urgent if the description contains any of these severity keywords: injury, child, school, hospital, ambulance, fire, hazard, fell, collapse. Otherwise, it should be Standard or Low."
-  - "Every output row must include a reason field citing specific words from the description that justify the category and priority."
-  - "If the category cannot be determined from the description alone, output category: Other and set the flag to: NEEDS_REVIEW."
+  - "[FILL IN: Specific testable rule 1 — e.g. Category must be exactly one of: Pothole, Flooding, ...]"
+  - "[FILL IN: Specific testable rule 2 — e.g. Priority must be Urgent if description contains: injury, child, school, ...]"
+  - "[FILL IN: Specific testable rule 3 — e.g. Every output row must include a reason field citing specific words from the description]"
+  - "[FILL IN: Refusal condition — e.g. If category cannot be determined from description alone, output category: Other and flag: NEEDS_REVIEW]"
